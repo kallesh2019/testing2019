@@ -1,0 +1,194 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="breadcrumbs"> <span class="mainbc">ITEMS</span> <span style="color: #ccc;">||</span> <span class="companynamebc">{{selectedCompName}}</span><a href="javascript:void(0)" data-target="#switchCompany" data-toggle="modal" class="switchCompanyLink" rel="noreferrer noopener">Switch company</a> </div>
+      <div class="BgTitle"> Manage Your Revenue Account </div>
+      <div class="setting_separator"></div>
+    </div>
+  </div>
+</div>
+<div class="container companycostvendordetails">
+<div class="row">
+  <div class="col-xs-5 col-md-3">
+    <div class="addavendor_btn_container">
+      <a href="#addrevaccount"  class="addavendor_btn">Add a revenue account</a>
+    </div>
+  </div>
+    <div class="col-xs-5 col-md-2">
+    <div class="addavendor_btn_container">
+      <a href="javascript:void(0)" (click)="deleteBulkModalRevAccount()" class="deleteavendor_btn"> Delete ({{selectedlineItems.length}})</a>
+    </div>
+  </div>
+    <div class="col-xs-5 col-md-2">
+    <div class="addavendor_btn_container">
+      <a href="javascript:void(0)" (click)="showinList(1)" class="showavendor_btn"> Show in Lists ({{selectedlineItems.length}})</a>
+    </div>
+  </div>
+    <div class="col-xs-5 col-md-2">
+    <div class="addavendor_btn_container">
+      <a href="javascript:void(0)" (click)="showinList(0)" class="hideavendor_btn"> Hide in Lists ({{selectedlineItems.length}})</a>
+    </div>
+  </div>  
+</div>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="table_container_transaction vendorTableContainer">
+      <div class="showallprogress_container showallvendorDetatilsConatiner">
+        <span class="textColored">All <em>{{revAccounts.length}}</em></span>
+        <span>Active <em>{{(revAccounts | filter : '1')?.length}}</em></span>
+        <span class="removeborder">Hide <em>{{revAccounts.length - ((revAccounts | filter : '1')?.length)}}</em></span>
+      </div>
+    
+    <table id="costTable">
+      <thead>
+            <tr>
+              <th class="text_left">All
+                <div class="inputContainerintabel">
+                  <input type="checkbox" name="tablecheck" class="selectall" (change)="selectAll()" [(ngModel)]="checkAll">
+                  <span class="checkmark"></span> </div>
+              </th>
+              <th class="paddingchange text_left">Revenue account </th>
+              <th class="paddingchange ">LAST MODIFIED</th>
+              <th class="paddingchange text-center">SHOW IN LIST </th>
+              <th class="paddingchange text_left"> </th>
+              <th class="paddingchange text_left"> </th>
+             </tr>
+      </thead>
+          <tbody *ngFor="let account of revAccounts;index as i">
+            <tr>
+              <td data-th="All">
+                <span class="bt-content"><div class="inputContainerintabel insideinputlabeltd">
+                  <input type="checkbox" name="tablecheck" class="singleSelect"  [checked]="selectedlineItems.indexOf(account.revenue_account_id)>=0" (change)="selectItem(account.revenue_account_id)">
+                  <span class="checkmark"></span> </div></span>
+                </td>
+              <td data-th="locationandcode"><span class="bt-content">{{account.revenue_account}}</span></td>
+              <td  class="text_right" data-th="lastmodified"><span class="bt-content">{{account.create_date | date:'MM-dd-yyyy'}}</span></td>
+              <td class="edit_ic text-center" data-th=" ">
+                <span class="bt-content">
+                <span class=" iconinsidetable icon-checkmark" style="display: inline;color:green" *ngIf="account.show_in_filter=='1'"></span>
+                </span>
+              </td>             
+              <td class="edit_ic" data-th=" "><span class="bt-content"><span class="naviblueclr iconinsidetable icon-edit opencostEditContainer" style="display: inline;" (click)="editRevAccount(account)"  *ngIf="editId != account.revenue_account_id"></span> <span class="iconinsidetable icon-edit opencostEditContainerop" (click)="cancelEdit(account)"  *ngIf="editId == account.revenue_account_id" style="opacity: 0.5;"></span></span></td>
+              <td class="edit_ic" data-th=" "><span class="bt-content"><span class="naviblueclr iconinsidetable icon-delete openEditAllocationContainer" (click)="deleteRevAccount(account)"></span> <span class="iconinsidetable icon-delete openEditAllocationContainerop"  style="display: none; opacity: .5"></span></span></td>
+            </tr>
+            <tr class="editvendorContainer editContainer" id="templateEdit" *ngIf="account.revenue_account_id==editId">
+            <td colspan=12>
+            <div class="col-xs-12">
+            <div class="row"><div class="header_edit_con">
+            <div class="col-md-3"><p class="edittitle">View and edit details</p></div>
+            <div class="col-md-2">
+            <div class="form-group">
+            <label for="mrktoreview2">
+            <input type="checkbox"  name="mrktoreview2" id="mrktoreview2"  [checked]="account.show_in_filter == '1'"  (change)="changeOpt($event, account)"> <span class="edittext"> Show in Lists </span>
+            </label>
+            </div>
+            </div></div>
+            <div class="clearfix"></div>
+            </div></div>
+
+            <div class="col-xs-12">
+            <div class="row"><div class="header_edit_con">
+
+            <div class="col-md-3">
+            <div class="form-group">
+            <label for="costcenter"> Revenue Account </label>
+            <input type="text"  name="costcenter" id="costcenter" [(ngModel)]="account.revenue_account">
+            </div>
+            </div></div>
+            <div class="clearfix"></div>
+            <div class="separater"></div>
+            <div class="clearfix"></div>
+            <div class="col-md-2">
+            <div class="button_box_secfilter" style="margin:10px 0 0 0;">
+            <div class="row">
+            <div class="col-xs-6">
+            <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" data-target="#saveallocatemodal"  rel="noreferrer noopener" (click)="saveRevAccount(account)" (click)="cancelEdit(i)">Save</a>
+            </div>
+            <div class="col-xs-6">
+            <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn"  rel="noreferrer noopener" (click)="cancelEdit(i)">Cancel</a>
+            </div></div></div></div>
+            </div></div></td>
+
+            </tr>            
+          </tbody>
+        <tr *ngIf="revAccounts.length == 0">
+         <td colspan="7" style="text-align:center">Records not found.</td>
+        </tr>                    
+    </table>
+  <div style="position: fixed;width:60%;top:40%;left: 45%;opacity: 1;z-index: 500000;" *ngIf="loader">
+    <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+</div>     
+</div>
+  </div>
+</div>
+</div>
+<!--  Modal Starts -->
+<div id="deleteModalHis" class="modal fade" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header" >
+        <div style="float:left"><span class="icon-delete" style="float:none; padding: 2px 0;"></span></div>
+        <div style="float:left"><h4 class="modal-title" style="padding: 10px 0;"><span>Are you sure you want to delete?</span></h4></div>
+      </div>
+      <div class="modal-body" >
+        <div class="form-group">
+          <label class="popuplabel" >comments</label>
+          <textarea style="width:100%;height:100px" id="deleteCommentsHis"></textarea>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn_container">
+          <div class="col-xs-4">
+            <div class="row button_box_secfilter">
+              <div class="row">
+                <div class="col-xs-6"> <a href="javascript:void(0)" (click)="okDelRevAccount()" class="normal-btn gray-btn blue-btn"  rel="noreferrer noopener">Save</a> </div>
+                <div class="col-xs-6"> <a href="javascript:void(0)"  (click)="CancelDelRevAccount()" class="normal-btn blue-btn Reset-btn"   rel="noreferrer noopener" data-dismiss="modal">Cancel</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Column Modal End --> 
+
+<!--  Modal Starts -->
+<div id="deleteModalHisBulk" class="modal fade" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header" >
+        <div style="float:left"><span class="icon-delete" style="float:none; padding: 2px 0;"></span></div>
+        <div style="float:left"><h4 class="modal-title" style="padding: 10px 0;"><span>Are you sure you want to delete?</span></h4></div>
+      </div>
+      <div class="modal-body" >
+        <div class="form-group">
+          <label class="popuplabel" >comments</label>
+          <textarea style="width:100%;height:100px" id="deleteCommentsBulk"></textarea>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn_container">
+          <div class="col-xs-4">
+            <div class="row button_box_secfilter">
+              <div class="row">
+                <div class="col-xs-6"> <a href="javascript:void(0)" (click)="okDelBulkRevAccounts()" class="normal-btn gray-btn blue-btn"  rel="noreferrer noopener">Save</a> </div>
+                <div class="col-xs-6"> <a href="javascript:void(0)"  (click)="CancelBulkDelRevAccount()" class="normal-btn blue-btn Reset-btn"   rel="noreferrer noopener" data-dismiss="modal">Cancel</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Column Modal End -->

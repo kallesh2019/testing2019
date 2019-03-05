@@ -1,0 +1,820 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: 'SourceSansPro-Black';
+  src: url('../fonts/SourceSansPro-Black.otf');
+  src: url('../fonts/SourceSansPro-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro-Bold';
+  src: url('../fonts/SourceSansPro-Bold.otf');
+  src: url('../fonts/SourceSansPro-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url('../fonts/SourceSansPro-Regular.otf');
+  src: url('../fonts/SourceSansPro-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SourceSansPro-Light';
+  src: url('../fonts/SourceSansPro-Light.otf');
+  src: url('../fonts/SourceSansPro-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  font-family: 'SourceSansPro-Regular';
+  font-weight: 300;
+}
+/*Login,Forgotpassword, Resetpassword page CSS*/
+.loginNav {
+  background-color: #F5F6FA;
+  border-bottom: 1px solid #ccc;
+}
+.login_logo {
+  height: 40px;
+  line-height: 40px;
+  float: left;
+}
+.login_logo img {
+  height: 20px;
+  margin-top: 0px;
+}
+.child_absolute {
+  max-width: 500px;
+  border: 1px solid #E7E7E7;
+}
+.login_container, .forgot_container, .reset_container {
+  background: #fff;
+  padding: 80px;
+  padding-top: 30px;
+  border: 2px solid #E7E7E7;
+  border-top: 0;
+  padding-bottom: 50px;
+}
+.welcometitle {
+  color: #919195;
+  font-size: 165%;
+  font-family: 'SourceSansPro-Light';
+  font-weight: 300;
+}
+.welcomeContent {
+  color: #5F6062;
+  font-family: SourceSansPro-Regular;
+  font-size: 115%;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+}
+.form-control {
+  border: 1px solid #CCCCCC;
+  border-radius: 0px;
+  font-family: SourceSansPro-Regular;
+}
+.login_container .form-group label, .forgot_container .form-group label, .reset_container .form-group label {
+  color: #72767E;
+  font-size: 88%;
+  font-weight: 400;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: 25px;
+}
+.form-control:focus {
+  border-color: #027FAD;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,.075), 0 0 0px rgba(102,175,233,.6);
+  box-shadow: inset 0 0px 0px rgba(0,0,0,.075), 0 0 0px rgba(102,175,233,.6);
+}
+.separater {
+  height: 1px;
+  width: 100%;
+  background-color: #D7D7D7;
+}
+.btncontainer {
+  margin-top: 25px;
+}
+.DCbtn {
+  border: 2px solid #027FAD;
+  border-radius: 15px;
+  background-color: #027FAD;
+  color: #FFFFFF;
+  font-size: 115%;
+  text-align: left;
+  padding: 3px 15px;
+  font-family: SourceSansPro-Bold;
+  line-height: 22px;
+}
+.forgetlink a {
+  color: #027FAD;
+  font-size: 14px;
+  font-family: SourceSansPro-Regular;
+}
+.separater.forgot {
+  margin: 35px 0 0 0px;
+}
+/* Setting Page CSS*/
+.setting_separator {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  margin: 5px 0;
+}
+.settingcompany_name {
+  font-family: 'SourceSansPro-Light';
+  color: #919195;
+  font-size: 175%;
+  width: 60%;
+  float: left;
+}
+.editavataxcompanydetails {
+  width: 40%;
+  float: left;
+  font-family: 'SourceSansPro-Regular';
+  font-size: 100%;
+}
+.editavataxcompanydetails a {
+  width: 100%;
+  min-height: 45px;
+  line-height: 45px;
+}
+.editavataxcompanydetails span {
+  color: #027FAD;
+}
+.editavataxcompanydetails img {
+  width: 23px;
+  margin-right: 5px;
+}
+.setcompanycode, .setaccountid {
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'SourceSansPro-Regular';
+  font-size: 100%;
+  letter-spacing: 1px;
+}
+.detailheading {
+  width: 35%;
+  float: left;
+  color: #72767E;
+}
+.companycode_set {
+  width: 65%;
+  float: left;
+  color: #5F6062;
+}
+.detailheading p, .companycode_set p {
+  margin: 10px 0;
+  font-size: 95%;
+}
+.setborder {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+.costcenterinfo {
+  width: 60%;
+  float: left;
+}
+.managecompanycostcenter {
+  width: 40%;
+  float: left;
+}
+.infoinside {
+  width: 90%;
+  margin: 0px auto;
+}
+.infoinside h4 {
+  font-size: 130%;
+  margin: 15px 0;
+  color: #5F6062;
+}
+.infoinside p {
+  width: 65%;
+}
+.setacclink {
+  font-size: 100%;
+  margin: 15px 0;
+  display: inline-block;
+  width: 100%;
+}
+.ruleheading {
+  width: 100%;
+  font-family: 'SourceSansPro-Light';
+  color: #919195;
+  font-size: 175%;
+  margin: 10px 0 0 0;
+}
+.transactionprocessingrule {
+  margin-bottom: 100px;
+}
+.blue-btn, .blue-btn:hover, .blue-btn:active, .blue-btn:focus {
+  background-color: #027FAD;
+  border: 1px solid #027FAD;
+  color: #fff;
+  border-radius: 0;
+}
+.import_history label {
+  color: #72767E;
+  font-family: 'SourceSansPro-Regular';
+  text-transform: uppercase;
+  font-size: 95%;
+  font-weight: normal;
+}
+.importform {
+  padding: 30px 0;
+}
+.removepadding {
+  margin-left: -15px;
+}
+/* Table CSS */
+/*
+ * jQuery Basic Table
+ * Author: Jerry Low
+ */
+
+.historytable table.bt thead,  .historytable table.bt tbody th,  .modaltable table.bt thead,  .modaltable table.bt tbody th {
+  display: none;
+}
+.historytable table.bt tfoot th, .historytable table.bt tfoot td, .historytable table.bt tbody td, .modaltable table.bt tfoot th, .modaltable table.bt tfoot td, .modaltable table.bt tbody td {
+  border: none;
+  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  vertical-align: top;
+  /* IE 9 */
+  float: left\9;
+  width: 100%\9;
+}
+.historytable table.bt tfoot th::before, .historytable table.bt tfoot td::before, .historytable table.bt tbody td::before, .modaltable table.bt tfoot th::before, .modaltable table.bt tfoot td::before, .modaltable table.bt tbody td::before {
+  content: attr(data-th) " ";
+  display: inline-block;
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+  width: 6.5em;
+}
+.historytable table.bt tfoot th.bt-hide, .historytable table.bt tfoot td.bt-hide, .historytable table.bt tbody td.bt-hide, .modaltable table.bt tfoot th.bt-hide, .modaltable table.bt tfoot td.bt-hide, .modaltable table.bt tbody td.bt-hide {
+  display: none;
+}
+.historytable table.bt tfoot th .bt-content, .historytable table.bt tfoot td .bt-content, .historytable table.bt tbody td .bt-content, .modaltable table.bt tfoot th .bt-content, .modaltable table.bt tfoot td .bt-content, .modaltable table.bt tbody td .bt-content {
+  vertical-align: top;
+}
+.historytable table.bt.bt--no-header tfoot td::before, .historytable table.bt.bt--no-header tbody td::before, .modaltable table.bt.bt--no-header tfoot td::before, .modaltable table.bt.bt--no-header tbody td::before {
+  display: none;
+}
+.historytable table, .modaltable table {
+  background: white;
+  border-collapse: collapse;
+  margin: .5em 0;
+  width: 100%;
+}
+.historytable table tr, .historytable table th, .historytable table td, .modaltable table tr, .modaltable table th, .modaltable table td {
+  border: none;
+  color: #5F6062;
+  font-family: SourceSansPro-Regular;
+}
+.historytable table th, .historytable table td, .modaltable table th, .modaltable table td {
+  padding: 10px 12px;
+}
+.historytable table th, .modaltable table th {
+  color: #72767E;
+  text-transform: uppercase;
+  font-weight: 100;
+  border-top: 1px solid #A5A5A5;
+  border-bottom: 1px solid #A5A5A5;
+  font-size: 95%;
+  letter-spacing: 1px;
+  font-family: SourceSansPro-Regular;
+}
+.historytable table tr td {
+}
+.historytable table tr:nth-of-type(2n+2) td {
+}
+.historytable table.bt tbody td, .modaltable table.bt tbody td {
+  font-size: 100%;
+  padding: 5px 0;
+}
+.historytable table.bt tbody td:before, .modaltable table.bt tbody td:before {
+  color: #656565;
+  margin-right: 10px;
+  padding: 2px 10px;
+  font-weight: 100;
+}
+.historytable table.bt tbody td .bt-content, .modaltable table.bt tbody td .bt-content {
+  display: inline-block;
+  padding: 2px 5px;
+}
+.historytable table.bt tbody td:first-of-type:before, .historytable table.bt tbody td:first-of-type .bt-content, .modaltable table.bt tbody td:first-of-type:before, .modaltable table.bt tbody td:first-of-type .bt-content {
+  padding-top: 10px;
+}
+.historytable table.bt tbody td:last-of-type:before, .historytable table.bt tbody td:last-of-type .bt-content, .modaltable table.bt tbody td:last-of-type:before, .modaltable table.bt tbody td:last-of-type .bt-content {
+  padding-bottom: 10px;
+}
+.historytable table tbody tr {
+  background: #F5F6FA;
+  border: 1px solid #ccc;
+}
+.historytable .emptytr {
+  width: 100%;
+  height: 5px;
+}
+.txtalignr {
+  text-align: right !important;
+}
+.txtalignc {
+  text-align: center !important;
+}
+.importcount {
+  width: 100%;
+  text-align: right;
+}
+.importcount p {
+  color: rgba(101, 101, 101, 0.5);
+  margin: 0;
+}
+.newbtn_container {
+  margin: 30px 0;
+}
+.mainrulelist, .companycostcenter {
+  width: 100%;
+  min-height: 10px;
+  height: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+#table [class^="icon-"], #table [class*=" icon-"] {
+  font-size: 125%;
+  position: relative;
+  top: 2px
+}
+.modal [class^="icon-"], .modal [class*=" icon-"] {
+  font-size: 180%;
+  position: relative;
+  top: 10px;
+  margin-right: 25px;
+  color: #919195;
+  display: inline-block;
+  float: left;
+}
+.modal-dialog {
+  width: 500px;
+  margin: 30px auto;
+}
+.modal-content {
+  padding: 20px;
+}
+.modal-header, .modal-body, .modal-footer {
+  padding: 15px 0;
+}
+.modal label {
+  font-size: 95%;
+  text-transform: uppercase;
+  color: #72767E;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+.modal-footer {
+  text-align: left;
+  padding: 25px 0 15px 0px;
+}
+.modal .close {
+  font-size: 200%;
+  color: #027fad;
+  opacity: 1;
+}
+.modal .close:focus, .modal .close:hover {
+  outline: none;
+}
+.modal .cancel-btn {
+  color: #027FAD;
+}
+.modal-title {
+  font-family: 'SourceSansPro-Regular';
+  font-size: 140%;
+}
+.form-control {
+  padding: 4px 12px;
+}
+.definemodal .modal-dialog {
+  width: 70%;
+}
+.definep {
+  font-size: 150%;
+}
+.definemodal table {
+  background: white;
+  border-collapse: collapse;
+  margin: 1.25em 0;
+  width: 100%;
+  margin-top: 0;
+}
+.definemodal table tbody tr {
+  background: rgba(39, 116, 154, 0.0);
+  border-bottom: 1px solid rgba(112, 112, 112, 0.42);
+  border-top: 1px solid rgba(112, 112, 112, 0.42);
+}
+.definemodal table th {
+  color: #72767E;
+  text-transform: uppercase;
+  font-weight: 100;
+  border-top: 1px solid #A5A5A5;
+  border-bottom: 1px solid #A5A5A5;
+  font-size: 95%;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+.definemodal table th, .definemodal table td {
+  padding: 10px 5px;
+  text-align: left;
+}
+.definemodal .modal [class^="icon-"], .definemodal .modal [class*=" icon-"] {
+  font-size: 150%;
+  position: relative;
+  top: 0;
+  margin-right: 0;
+  color: #b7b7b7;
+  display: block;
+  float: none;
+}
+.definemodal .accordion-toggle.collapsed:before, .definemodal .accordion-toggle:before {
+  left: 10px;
+}
+.definemodal .form-group {
+  margin: 10px 0;
+}
+.definemodal .nav-tabs>li>a {
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+.definemodal .nav>li>a {
+  padding: 10px 0;
+}
+.definemodal [class^="icon-"], .definemodal [class*=" icon-"] {
+  font-size: 140%;
+  position: relative;
+  top: 0px;
+  margin-right: 10px;
+  color: #d7d7d7;
+  display: inline-block;
+  float: left;
+}
+.addcity {
+  border: 1px solid #ccc;
+  padding: 10px 0;
+  border-left: 0;
+  border-right: 0;
+}
+.definemodal .modal-footer {
+  border: 0;
+}
+.bulkfilterContainer input[type=radio] {
+  margin: 0px 0 0;
+  width: 18px;
+  height: 18px;
+}
+.radio-inline input[type=radio] {
+  margin-left: -22px;
+  margin-top: 4px;
+}
+.bulkfilterContainer [class^="icon-"], [class*=" icon-"] {
+  margin: 0 4px 0 5px;
+  font-size: 18px;
+}
+.marginadjustment {
+  margin: 15px 0;
+}
+a.filterLink {
+  color: #027FAD;
+}
+.rightborder {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  margin: -5px 15px;
+  background: #ccc;
+  padding: 3px 0;
+}
+.newalign a {
+  padding: 5px 0;
+}
+.TransactionFilterBody .dropdown-multiple {
+  margin-bottom: 15px;
+}
+.bulkfilterContainer .radio-inline {
+  padding-right: 15px;
+  border-right: 1px solid #ccc;
+  line-height: 25px;
+}
+.bulkfilterContainer .radioContainer .radio-inline:last-child {
+  padding-right: 15px;
+  border-right: 0px solid #ccc;
+}
+.bulkfilterContainer .icono-con, .radioContainer em {
+  top: 0px;
+}
+.tooltip-icon, .tooltip-icon:hover {
+  top: -3px;
+}
+.editContainer, .editallocatonContainer {
+  background: rgba(255,255,255,0) !important;
+}
+.editContainer input[type=checkbox], .editallocatonContainer input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.editContainer label, .editallocatonContainer label {
+  font-weight: 100;
+  color: #72767E;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 80%;
+}
+.edittext {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    vertical-align: top;
+}
+.edittitle {
+  color: #5F6062;
+  font-family: 'SourceSansPro-Regular';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.removebg tr {
+  background: rgba(39, 116, 154, 0) !important;
+  border: 1px solid rgba(112, 112, 112, 0.42);
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+.removebg th {
+  padding-bottom: 0 !important;
+}
+.removebg .form-group {
+  margin: 15px 0;
+}
+.editallocatonContainer a.accordion-toggle {
+  margin: 0px;
+}
+.table_tab_container .nav-tabs>li>a {
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+.table_tab_container .nav>li>a {
+  padding: 10px 0;
+}
+input[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus {
+  outline: none !important;
+}
+.modal-body {
+  width: 100%;
+  min-height: 10px;
+  height: auto;
+  overflow-y: hidden;
+}
+.companycode_set a {
+  line-height: none !important;
+}
+.dropdown-display, .dropdown-display-label, .dropdown-display .placeholder:first-child {
+  font-size: 16px;
+}
+.txtleft {
+  text-align: left !important;
+}
+.radiobline {
+  padding: 0 15px;
+  position: relative;
+  top: -2px;
+  color: #ccc;
+}
+.paddingremove {
+  padding: 0;
+}
+span.icon-sort-down_arrow.fillblue {
+    font-size: 22px !important;
+    color: #027fad;
+    cursor: pointer;
+}
+span.icon-sort-down_arrow {
+    font-size: 21px !important;
+    color: #D7D7D7;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+.login_logo {
+  height: 40px;
+  line-height: 40px;
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+.login_logo img {
+  width: 285px;
+  height: 20px;
+  margin-top: 0px;
+}
+.login_container, .forgot_container, .reset_container {
+  background: #fff;
+  padding: 15px;
+  padding-top: 15px;
+  border: 2px solid #E7E7E7;
+  border-top: 0;
+  padding-bottom: 30px;
+}
+.forgetlink {
+  color: #027FAD;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  margin: 15px auto;
+}
+.settingcompany_name, .editavataxcompanydetails, .costcenterinfo, .managecompanycostcenter {
+  width: 100%;
+  float: none;
+}
+.infoinside, .infoinside p {
+  width: 100%
+}
+.companycostvendordetails, .transactionprocessingrule {
+}
+.parent_relative {
+  position: relative;
+  width: 100%;
+  height: calc( 100vh - 41px);
+  background-image: url(../images/bg.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+}
+.removepadding {
+  margin-left: 0;
+}
+.newbtn_container {
+  margin: 20px 0;
+}
+.emptypadding {
+  padding: 0;
+}
+.float_nav_left {
+  padding-left: 0px;
+}
+.navbar-nav {
+  margin: 0px;
+}
+.drop_right {
+  padding-right: 0px;
+}
+.BgTitle {
+  font-size: 20px;
+}
+.importform {
+  padding: 15px 0;
+}
+.detailheading {
+  width: 45%;
+}
+.companycode_set {
+  width: 55%;
+}
+.setacclink {
+  margin: 0px 0;
+}
+.modal-dialog {
+  width: auto;
+  margin: 10px;
+}
+.modal [class^="icon-"], .modal [class*=" icon-"] {
+  font-size: 150%;
+  position: relative;
+  top: 10px;
+  margin-right: 10px;
+  color: #919195;
+  display: inline-block;
+  float: left;
+}
+.modal-title {
+  font-family: 'SourceSansPro-Regular';
+  font-size: 114%;
+  padding: 10px 0;
+}
+.modal-header, .modal-body, .modal-footer {
+  padding: 15px 0;
+}
+.definemodal .modal-dialog {
+  width: auto;
+}
+.marginadjustment {
+  margin: 0px;
+}
+.tandAhead, .col-md-20 {
+  margin-bottom: 15px;
+}
+.heading_taxandsummary, .amount_taxandsummary {
+  text-align: left;
+}
+.bulkfilterContainer [class^="icon-"], [class*=" icon-"] {
+  margin: 0 0px 0 0px;
+  font-size: 18px;
+}
+.bulkfilterContainer {
+  padding: 1em 15px 2em 15px;
+}
+.bulkfilterContainer .radio-inline {
+  border-right: 0px solid #ccc;
+}
+.setting_separator {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  margin: 15px 0 3px;
+}
+.infoinside h4 {
+  margin: 10px 0;
+}
+.txtalignc {
+  text-align: left !important;
+}
+.heightC {
+  min-height: 30px;
+}
+.radiobline {
+  display: none;
+}
+.paddingremove {
+  padding: 0 15px;
+}
+#table_inside .text_right {
+  text-align: left !important;
+}
+.form-group select {
+  min-width: 120px !important;
+}
+.margintopchange {
+  margin-top: 15px;
+}
+.switchCompanyLink, .switchCompanyLink:hover {
+  color: #027FAD;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+}
+
+@media only screen and (max-width: 992px) {
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+.settingcompany_name, .editavataxcompanydetails {
+  width: 100%;
+}
+.removepadding {
+  margin-left: 0;
+}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1130px) {
+.definemodal .modal-dialog {
+  width: 95%;
+}
+.table_container_transaction table th, .table_container_transaction table td, th.paddingchange {
+  padding: 0 !important;
+}
+.definemodal table th {
+  font-size: 85%;
+}
+.wadjust {
+  width: 95%;
+}
+.form-group select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url(../images/down_arrow.png);
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 6px;
+  background-size: 17px;
+}
+.form-control {
+  padding: 4px 15px 4px 5px;
+}
+}
+a.blue-btn.cancel-btn {
+    color: #fff;
+    margin-left: 5px;
+}

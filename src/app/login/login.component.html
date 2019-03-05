@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from dev.iconicappsolutions.com/dev/kaniraj-testing/Avalara_cut_new_php-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 13 Sep 2018 06:42:06 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="AVALARA CUT for Calculating Tax">
+<meta name="author" content="">
+<!-- Apple Meta Tag -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- windows Tiles Meta Tag -->
+<meta name="msapplication-TileColor" content="#027FAD" />
+<meta name="application-name" content="Avalara Cut" />
+
+<title>AVALARA || Web Portal</title>
+<link rel="icon" href="assets/images/favi.jpg" >
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/daterangepicker.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/css/jquery.dropdown.css">
+<link rel="stylesheet" type="text/css" href="assets/css/dropzone.css">
+<link rel="stylesheet" type="text/css" href="assets/css/icomoon.css">
+<link rel="stylesheet" type="text/css" href="assets/css/master.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="loginNav">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="login_logo"> <img src="assets/images/nav_logo1.png" alt="logo_Avalara CUT"> </div>
+      </div>
+          </div>
+  </div>
+</nav>
+  </div>
+</div>
+<div class="parent_relative">
+  <div class="child_absolute">
+    <div class="login_container"  id="logincontainer">
+      <h2 class="welcometitle">Welcome</h2>
+      <p class="welcomeContent">Log in to Avalara Consumer Use Tax</p>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <span style="color:red" *ngIf="error==true">Invalid credentials</span><br/>
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username"  [(ngModel)]="username">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <label for="pwd">Password</label>
+            <input type="password" class="form-control" id="pwd" [(ngModel)]="password">
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="separater"></div>
+      <div class="form-group btncontainer"> <a href="javascript:void(0)" class="DCbtn" rel="noreferrer noopener" (click)="loginUser()">Log in</a> </div>
+    </div>
+    <div class="forgot_container" id="forgetcontainer" style="display: none;">
+      <h2 class="welcometitle">Forgot your password?</h2>
+      <p class="welcomeContent">No problem. Type in your email and click the <b>Request reset</b> button. We’ll send you a reset link to create a new password.</p>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="separater forgot"></div>
+      <div class="form-group btncontainer"> <a href="assets/#" class="DCbtn requestbtn" rel="noreferrer noopener" >Request reset</a> </div>
+    </div>
+    <div class="reset_container" id="resetcontainer" style="display: none;">
+      <h2 class="welcometitle">Reset  your password</h2>
+      <p class="welcomeContent">Type in your email, and a new password of your choosing before accessing your Avalara Consumer Use Tax account</p>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email1">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <label for="npwd">New Password</label>
+            <input type="password" class="form-control" id="npwd">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <div class="row">
+            <label for="cpwd">Confirm Password</label>
+            <input type="password" class="form-control" id="cpwd">
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="separater forgot"></div>
+      <div class="form-group btncontainer"> <a href="assets/#" class="DCbtn resetbtn" rel="noreferrer noopener" >Reset Password</a> </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
+<!-- <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>	 -->
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/moment.min.js"></script>
+<script src="assets/js/daterangepicker.min.js"></script>
+<script src="assets/js/jquery.dropdown.js"></script>
+<script src="assets/js/style.js"></script>
+<script src="assets/js/jquery.basictable.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+  <div style="position: fixed;width:50%;top:40%;left: 45%;opacity: 1;z-index: 500000;" *ngIf="loader">
+    <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+</div>  
+</body>
+</html>

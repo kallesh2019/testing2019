@@ -1,0 +1,163 @@
+.tooltip {
+	max-width: 280px !important;
+	width: 280px !important;
+	text-align: left;
+	border: 1px solid #e9e9e9;
+}
+.tooltip.top
+{
+	padding: 0;
+	    box-shadow: 2px 2px 0 #e9e9e9;
+}
+.tooltip-arrow
+{
+	bottom: -5px !important;
+	border-top-color: #dadada !important;
+}
+
+.tooltip-inner {
+    max-width: 280px !important;
+    width: 280px !important;
+    background-color: #fff;
+    color: #72767E;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: SourceSansPro-Regular;
+}
+
+    .tooltip-head{
+    color: #72767E;
+    background: #fff;
+    padding: 20px 25px;
+    text-align: left;
+ /* Hide default tooltip rounded corner from top */
+    }
+    .tooltip-head .glyphicon{
+        font-size: 22px;
+        vertical-align: bottom;
+    }
+    .tooltip-head h5{
+    margin: 0;
+    font-size: 18px;
+    color: #5F6062;
+    font-family: SourceSansPro-Regular;
+    }
+    .main
+    {
+    	width: 100%;
+       
+    }
+    .main span
+    {
+    	width: 50%;
+    	display: inline-block;
+    }
+    .main span:nth-child(1)
+    {
+    	text-align: left;
+    }
+    .main span:nth-child(2)
+    {
+    	text-align: right;
+    }
+    .main div
+    {
+    	margin-bottom: 10px;
+    }
+    .orange-btn
+    {
+    color: #FF6600;
+    text-decoration: none;
+    font-family: 'SourceSansPro-Bold';
+    }
+    .orange-btn:hover, .orange-btn:focus
+    {
+    	color: #FF6600;
+    }
+    .marl
+    {
+    	margin-left: 15px;
+    }
+    .info span, .err span
+    {
+    	position: relative;
+    }
+    .info span a, .info span a:hover, .info span a:focus, .err span a, .err span a:hover, .err span a:focus
+    {
+    	position: absolute;
+    	top: -2px;
+    }
+    .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 0%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 15px;
+  animation: lds-ellipsis1 0.6s infinite;
+      background: #b5cdd8;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 25px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #91b9cc;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 35px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #03A9F4;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+    background: #03A9F4; 
+}
+.historytable table tr td {
+    vertical-align: top;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+   100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }  100% {
+    transform: scale(1);
+  }
+}
+ @media only screen and (max-width: 768px) {
+    .info span a, .info span a:hover, .info span a:focus, .err span a, .err span a:hover, .err span a:focus
+    {
+    	position: absolute;
+    	top: 2px;
+    }
+}

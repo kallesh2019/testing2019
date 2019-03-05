@@ -1,0 +1,321 @@
+<style type="text/css">
+	/* Styles for custom tooltip template */
+/* Tooltip container */
+.tooltip {
+	max-width: 280px !important;
+	width: 280px !important;
+	text-align: left;
+	border: 1px solid #e9e9e9;
+}
+.tooltip.top
+{
+	padding: 0;
+	    box-shadow: 2px 2px 0 #e9e9e9;
+}
+.tooltip-arrow
+{
+	bottom: -5px !important;
+	border-top-color: #dadada !important;
+}
+
+/* Tooltip text */
+.tooltip-inner {
+    max-width: 280px !important;
+    width: 280px !important;
+    background-color: #fff;
+    color: #72767E;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-family: SourceSansPro-Regular;
+}
+
+    .tooltip-head{
+    color: #72767E;
+    background: #fff;
+    padding: 20px 25px;
+    text-align: left;
+ /* Hide default tooltip rounded corner from top */
+    }
+    .tooltip-head .glyphicon{
+        font-size: 22px;
+        vertical-align: bottom;
+    }
+    .tooltip-head h5{
+    margin: 0;
+    font-size: 18px;
+    color: #5F6062;
+    font-family: SourceSansPro-Regular;
+    }
+    .main
+    {
+    	width: 100%;
+       
+    }
+    .main span
+    {
+    	width: 50%;
+    	display: inline-block;
+    }
+    .main span:nth-child(1)
+    {
+    	text-align: left;
+    }
+    .main span:nth-child(2)
+    {
+    	text-align: right;
+    }
+    .main div
+    {
+    	margin-bottom: 10px;
+    }
+    .orange-btn
+    {
+    color: #FF6600;
+    text-decoration: none;
+    font-family: 'SourceSansPro-Bold';
+    }
+    .orange-btn:hover, .orange-btn:focus
+    {
+    	color: #FF6600;
+    }
+    .marl
+    {
+    	margin-left: 15px;
+    }
+    .info span, .err span
+    {
+    	position: relative;
+    width: 100%;
+    display: inline-block;
+    }
+    .info span a, .info span a:hover, .info span a:focus, .err span a, .err span a:hover, .err span a:focus
+    {
+    	position: absolute;
+    top: 1px;
+    right: 0px;
+    }
+    .lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 0%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 15px;
+  animation: lds-ellipsis1 0.6s infinite;
+      background: #b5cdd8;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 25px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #91b9cc;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 35px;
+  animation: lds-ellipsis2 0.6s infinite;
+  background: #03A9F4;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+    background: #03A9F4; 
+}
+.historytable table tr td {
+    vertical-align: top;
+}
+.importform {
+    padding: 45px 0 30px;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+   100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0.5);
+  }  100% {
+    transform: scale(1);
+  }
+}
+.icon-delete
+{
+	font-size: 140% !important;
+	top: 0 !important;
+}
+.icon-delete:hover
+{
+  color: rgb(2, 127, 173);
+}
+ @media only screen and (max-width: 768px) {
+    .info span a, .info span a:hover, .info span a:focus, .err span a, .err span a:hover, .err span a:focus
+    {
+    	position: absolute;
+    	top: 2px;
+    }
+}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="breadcrumbs">
+				<span class="mainbc">Transactions</span> | <span class="companynamebc">{{selectedCompName}}</span> 
+				<a href="javascript:void(0)" data-target="#switchCompany " data-toggle="modal" class="switchCompanyLink">Switch company</a>
+			</div>
+			<div class="BgTitle"> Transaction Import History </div>
+		</div>
+	</div>
+</div>
+<div class="container import_history">
+	<div class="row importform">
+		<div class="col-xs-12">
+			<div class="col-xs-12 col-md-2 removepadding emptypadding">
+				<div class="form-group">
+					<label for="fromdate">IMPORTED From</label>
+					<input  type="text" name="modiDate" readonly class="form-control clbg" id="fromdatehis" style="background-color: #fff !important; color: #000;">
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-2 emptypadding">
+				<div class="form-group">
+					<label for="todate">IMPORTED To</label>
+					<input  type="text" name="docDate" readonly class="form-control clbg" id="todatehis" style="background-color: #fff !important; color: #000;">
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-1 btn_top button_box emptypadding">
+				<a href="#history" class="normal-btn blue-btn" (click) ="loadHistories()">Apply</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container historytable">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="importcount">
+				<p>{{histories.importhistory.length}} Imports</p>
+			</div>
+			<table id="table" style="margin: 0.5em 0 5.5em;">
+				<thead>
+					<tr>
+						<th class="txtalignc">Source</th>
+						<th (click) = "sortData('importfilename', 1)">FileName <span class="icon-sort-down_arrow" *ngIf="selColumn!==1"></span>
+                        <span class="icon-sort-down_arrow fillblue" *ngIf="sortOrder==1 && selColumn ===1"></span><span class="icon-sort-up-arrow fillblue" *ngIf="sortOrder==-1 && selColumn ===1"></span></th>
+						<th (click) = "sortData('templateid', 2)" style="width:120px">Template <span class="icon-sort-down_arrow" *ngIf="selColumn!==2"></span>
+                        <span class="icon-sort-down_arrow fillblue" *ngIf="sortOrder==1 && selColumn ===2"></span><span class="icon-sort-up-arrow fillblue" *ngIf="sortOrder==-1 && selColumn ===2"></span></th>
+						<th (click) = "sortData('pulldate', 3)" style="width:140px"><div>Transaction<span class="icon-sort-down_arrow" *ngIf="selColumn!==3"></span>
+                        <span class="icon-sort-down_arrow fillblue" *ngIf="sortOrder==1 && selColumn ===3"></span><span class="icon-sort-up-arrow fillblue" *ngIf="sortOrder==-1 && selColumn ===3"></span></div> </th>
+						<th class="txtalignc" (click) = "sortData('createdate', 4)" style="width:120px">Imported <span class="icon-sort-down_arrow" *ngIf="selColumn!==4"></span>
+                        <span class="icon-sort-down_arrow fillblue" *ngIf="sortOrder==1 && selColumn ===4"></span><span class="icon-sort-up-arrow fillblue" *ngIf="sortOrder==-1 && selColumn ===4"></span></th>
+						<th (click) = "sortData('importstatusid', 5)" style="width:110px">Status <span class="icon-sort-down_arrow" *ngIf="selColumn!==5"></span>
+                        <span class="icon-sort-down_arrow fillblue" *ngIf="sortOrder==1 && selColumn ===5"></span><span class="icon-sort-up-arrow fillblue" *ngIf="sortOrder==-1 && selColumn ===5"></span></th>
+						<th class="txtalignc"></th>
+						<th class="txtalignc">Errors</th>
+						<th class="txtalignc">Results</th>
+						<th class="txtalignc"></th>
+
+					</tr>
+					<tr class="emptytr"></tr>
+				</thead>
+        <tbody id="nodatafound">
+          <tr>
+            <td colspan="12" style="text-align: center">No result found for the applied filter</td>
+          </tr>
+        </tbody>
+				<tbody>
+                    <ng-container *ngFor="let history of histories.importhistory">
+					<tr>
+						<td class="txtalignc anima"><span class="icon-download" (click)="downloadSource(history.importid)" style="color:#27749A;"></span>
+                        <span   *ngIf="history.importstatusid === 1"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></span></td>
+						<td>{{history.importfilename}}</td>
+						<td>{{history.templateid}}</td>
+						<td class="txtalignc">{{history.pulldate | date:'MM/dd/yyyy'}}</td>
+                        <td><span>{{history.createdate | date:'MM/dd/yyyy'}}</span> <span class="marl fontsmall"> {{history.insertuser}}</span></td>
+						<td>
+                <div *ngIf="history.importstatusid ==0 && history.resultmessage =='Import Aborted';else elseBlock1">Failed</div>
+                      <ng-template #elseBlock1>
+                          <div>Importing</div>
+                    </ng-template>
+						    <div *ngIf="history.precalcapplied">Pre-calc</div>
+						    <div *ngIf="history.calcapplied">AvaTax</div>
+						    <div *ngIf="history.postcalcapplied">Post-calc</div>
+						</td>
+						<td>
+							<div class="fontsmall" *ngIf="history.totaldocs">{{history.importstatusid}}</div>
+							<div class="fontsmall" *ngIf="history.precalcapplied">{{history.precalcapplied}}</div>
+							<div class="fontsmall" *ngIf="history.calcapplied">{{history.calcapplied}}</div>
+							<div class="fontsmall" *ngIf="history.postcalcapplied">{{history.postcalcapplied}}</div>
+						</td>
+						<td class="txtalignc"><span class="icon-download" style="color:#27749A;" (click)="downloadError(history.importid)" *ngIf="history.errortotal > 0 && history.hasfile === 'true'"></span></td>
+						<td class="txtalignc">{{history.resultmessage}}</td>
+						<td class="txtalignc"><span class="icon-delete" (click)="deleteHistory(history.importid)"></span></td>
+					</tr>
+					<tr class="emptytr"></tr>
+                    </ng-container>
+				</tbody>
+			</table>
+
+			<!-- <div class="form-group newbtn_container"> <a href="?page=Transaction" class="DCbtn">Back to transactions</a> </div> -->
+
+		</div>
+	</div>
+  <div style="position: fixed;width:60%;top:40%;left: 45%;opacity: 1;z-index: 500000;" *ngIf="loader">
+    <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+</div>       
+</div>
+<div id="deleteModalHis" class="modal fade" role="dialog">
+  <div class="modal-dialog"> 
+    
+    <!-- Modal content-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-header" >
+        <div style="float:left"><span class="icon-delete" style="float:none; padding: 4px 0;"></span></div>
+        <div style="float:left"><h4 class="modal-title"><span>Are you sure you want to delete?</span></h4></div>
+      </div>
+      <div class="modal-body" >
+        <div class="form-group">
+          <label class="popuplabel" >comments</label>
+          <textarea style="width:100%;height:100px" id="deleteCommentsHis"></textarea>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn_container">
+          <div class="col-xs-4">
+            <div class="row button_box_secfilter">
+              <div class="row">
+                <div class="col-xs-6"> <a href="javascript:void(0)" (click)="okDelHis()" class="normal-btn gray-btn blue-btn"  rel="noreferrer noopener">Save</a> </div>
+                <div class="col-xs-6"> <a href="javascript:void(0)"  class="normal-btn Reset-btn"   rel="noreferrer noopener" data-dismiss="modal">Cancel</a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

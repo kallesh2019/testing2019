@@ -1,0 +1,113 @@
+<style type="text/css">
+    label {
+  color: #72767E;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  text-align: left;
+  margin-top: 10px;
+
+}
+option[value=""][disabled], option[disabled] {
+
+  display: none;
+  font-style: italic;
+}
+.form-group select::-ms-expand {
+    display: none;
+}
+.form-group select {
+ -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+ 
+  background-size: 20px;
+  padding: 2px 21px 4px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+      -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-indent: .01px;
+    text-overflow: "";
+}
+
+</style>
+<div class="container">
+    <form #myForm="ngForm" >
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="breadcrumbs">
+				<span class="mainbc">Transactions</span> | <span class="companynamebc">{{selectedCompName}}</span> 
+				<a href="javascript:void(0)" data-target="#switchCompany " data-toggle="modal" class="switchCompanyLink">Switch company</a>
+			</div>
+			<div class="BgTitle"> Import transaction data </div>
+			<div class="normal_text">
+				Ensure you have all the data required for successful upload any processing by downloading and using a consumer use tax-import template
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="col-xs-12 col-md-8 col-md-offset-2 mTop">
+			  <div class="col-xs-12 col-md-4">
+                    <div class="form-group" style="margin-bottom: 25px;">
+                      <label for="selectVentorname">IMPORT TYPE</label>
+                      <select name="template"  #template="ngModel" class="form-control" [(ngModel)]="selectedTemplate" (change)="onChange()" required>
+                        <option value= "" ng-selected="selected">Please select</option>
+                        <option *ngFor="let template of templatelist" [ngValue]="template.template_name">{{ template.template_name }}</option>
+                      </select>
+                    </div>
+                    <div *ngIf="template.invalid"  style="color:red"> 
+                          Please select template. 
+                    </div>                     
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="separater"></div>
+                  <div class="col-xs-12 col-md-6" *ngIf="selectedTemplate">
+                  	<div class="link_separate_div">
+                        <a class="DownloadImportTemplate" href="javascript:void(0)" (click)="downloadTemplate()" >{{selectedTemplateName}}</a>
+                  		<a class="helpImportTemplate" href="{{help.helpurl}}" target="_blank" *ngFor="let help of helps.templatehelplist">{{help.helpdescription}}</a>
+                  	</div>
+                  </div>
+                   <div class="clearfix" *ngIf="selectedTemplate"></div>
+                  <div class="separater" style="margin: 15px 0;" *ngIf="selectedTemplate"></div>
+                  <div class="clearfix"></div>
+                   <div class="col-xs-12 col-md-4">
+                    <div class="form-group">
+                      <label for="selectVentorDate">TRANSACTION COLLECTION DATE</label>
+                      <input  type="text" name="selectVentorDate" class="form-control clbg" readonly id="selectVentorDate" style="background-color: #fff !important; color: #000;" onKeyDown="return false;">
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="col-xs-12">
+                  	<div class="drop_container">
+						<div [dropzone]="DEFAULT_DROPZONE_CONFIG"  (addedfile) ="onAdded($event)" >
+                                    <div class="dz-message"><span class="main_drag_text">drag and drop</span>
+                                                <br> 
+                                                <div class="start_message">
+                                                <span class="note">Upload your .csv file</span><br>
+                                                <span class="browse_btn">Browse instead</span>
+                                                  </div>
+                                        </div>                        
+                        </div>
+						<div class="while_uploading_secction" *ngIf="submitting">
+							<p class="uploadingtxt">This may take a few minutes</p>
+							<img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;">
+						</div>
+					</div>
+                    <div *ngIf="formerror" style="color:red" > 
+                          Please select valid file to upload. 
+                    </div>   
+                    <input type="button" value="Upload" style="font-family: 'SourceSansPro-Bold';width:150px; font-size: 14px;background-color: rgb(2, 127, 173);color: #fff;border:0px;padding: 13px 20px;" (click)="startupload()"/>
+                    <br/>
+                    <br/>&nbsp;
+                  </div>
+                <div style="position: absolute;width:100%;top:20%;left: 50%;opacity: 1;z-index: 500000;" *ngIf="loader" >
+                    <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+                </div>                  
+		</div>
+	</div>
+    </form>
+</div>

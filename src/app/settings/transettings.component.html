@@ -1,0 +1,110 @@
+<div class="clearfix"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="breadcrumbs"> <span class="mainbc">TRANSACTION PROCESSING SETTINGS</span> <span style="color: #ccc;">||</span> <span class="companynamebc">{{selectedCompName}}</span>
+        <a href="javascript:void(0)" data-target="#switchCompany" data-toggle="modal" class="switchCompanyLink" rel="noreferrer noopener">Switch company</a>  </div>
+      <div class="BgTitle"> Manage your transaction processing settings </div>
+      
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-xs-12">
+     <div class="infodinside">
+            <h4>Importing data</h4>
+      </div>
+      <label class="checkboxprocesssetting">Automatically add new data values found in transaction import records to list fields for use in filtering and transaction editing.<i data-toggle="tooltip" title="When your imported transactions contain data values that don't exist in the system, we'll add them so they can be selected as a filter or edited in a transaction." class="infoicon icon-field-help"></i>
+      <input id="parentcheck" type="checkbox" [checked]="settings.add_new_data == '1'"  (change)="changeOpt($event, settings, 'add_new_data'); checkchild()">
+      <span class="checkmark"></span>
+       </label>
+       <label class="checkboxprocesssetting" style="margin-left: 40px;">Upon transaction import, populate empty fields based on default values set for vendors, items, and etc.<i data-toggle="tooltip" title="When values like Cost Center or Purpose are missing from your transaction import, we'll chek your company defaults and add the right data" class="infoicon icon-field-help"></i>
+      <input id="childcheck" type="checkbox"  [checked]="settings.default_translate == '1'"  (change)="changeOpt($event, settings, 'default_translate'); addparent()">
+      <span class="checkmark"></span>
+      </label>
+      <label class="checkboxprocesssetting">On transaction commit, create LOCATION CODES for new destination address.
+      <input type="checkbox" [checked]="settings.add_location_code == '1'"  (change)="changeOpt($event, settings, 'add_location_code')">
+      <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="clearfix"></div>
+        <div class="col-md-6 col-xs-12 proccessingsettingsinputs">
+     <div class="infodinside">
+            <h4>Integration with Avalara AvaTax</h4>
+     </div>
+     <div class="clearfix"></div>
+     <div class="col-md-5">
+       <div class="row">
+        <div class="form-group">
+            <label for="acccode"> ACCOUNT CODE </label>
+            <input type="text"  name="acccode" id="acccode" [(ngModel)]="settings.account_code">
+        </div>       
+       </div>
+     </div>
+      <div class="clearfix"></div>
+     <div class="col-md-5">
+       <div class="row">
+        <div class="form-group">
+            <label for="cmpcode"> COMPANY CODE </label>
+            <input type="text"  name="cmpcode" id="cmpcode" [(ngModel)]="settings.company_code">
+        </div>       
+       </div>
+     </div>
+      <div class="clearfix"></div>
+      <div class="col-md-12">
+       <div class="row">
+        <div class="form-group">
+            <label for="cmpcode"> SERVICE URL </label>
+         <input type="text"  name="cmpcode" id="cmpcode" [(ngModel)]="settings.service_url">
+        </div>       
+       </div>
+     </div>
+      <div class="clearfix"></div>
+            <div class="col-md-12">
+       <div class="row">
+        <div class="form-group">
+            <label for="licensekey"> LICENSE KEY </label>
+           <input type="text"  name="licensekey" id="licensekey" [(ngModel)]="settings.license_key">
+        </div>       
+       </div>
+     </div>
+      <div class="clearfix"></div>
+            <div class="col-md-12">
+       <div class="row">
+        <div class="testConnectBtnConotainer">
+      <a href="#!">Test Connection</a>      
+        </div>
+       </div>
+     </div>
+     
+    </div>
+     <div class="clearfix"></div>
+        <div class="col-md-5 col-xs-12">
+     <div class="infodinside">
+            <h4>Integration with Avalara Avatax</h4>
+      </div>
+      <label class="checkboxprocesssetting">Globally disable all Avalara tax calculation services form this instance of Avalara Consumer Use. This effectively disables much of this applications capabilities.<i data-toggle="tooltip" title="tooltip text" class="infoicon icon-field-help"></i>
+      <input type="checkbox" [checked]="settings.disable_avatax_calc == '1'"  (change)="changeOpt($event, settings, 'disable_avatax_calc')">
+      <span class="checkmark"></span>
+      </label>
+       <label class="checkboxprocesssetting">Globally disable all commit functions from Avalara Consumer Use. This suppresses any non-getTax call and sets commit = FALSE. Use is then required to commit all transactions from within AvaTax Update.<i data-toggle="tooltip" title="tooltip text" class="infoicon icon-field-help"></i>
+      <input type="checkbox" [checked]="settings.disable_avatax_comit == '1'"  (change)="changeOpt($event, settings, 'disable_avatax_comit')">
+      <span class="checkmark"></span>
+      </label>
+      <label class="checkboxprocesssetting"> Enable detailed AvaTax logging for up to four hours<br>
+NOTE: This feature automatically resets after that time Detailed logs can be retrived <a href="#!">here</a> <i data-toggle="tooltip" title="tooltip text" class="infoicon icon-field-help"></i>
+      <input type="checkbox" [checked]="settings.enable_avatax_logging == '1'"  (change)="changeOpt($event, settings, 'enable_avatax_logging')">
+      <span class="checkmark"></span>
+      </label>
+    </div>
+     <div class="clearfix"></div>
+      <div class="addmargin30px setting_separator"></div>
+      <div class="clearfix"></div>
+
+      <div class="addmargin40btmpx col-md-2"><div class="button_box_secfilter" style="margin:10px 0 0 0;"><div class="row"><div class="col-xs-6"><a href="javascript:void(0)" class="normal-btn gray-btn blue-btn"  rel="noreferrer noopener" (click)="saveSettings()">Save</a></div><div class="col-xs-6"><a href="#settings" class="normal-btn blue-btn Reset-btn" rel="noreferrer noopener">Cancel</a></div></div></div></div>
+  </div> 
+  <div style="position: fixed;width:60%;top:40%;left: 45%;opacity: 1;z-index: 500000;" *ngIf="loader">
+    <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+</div>    
+</div>

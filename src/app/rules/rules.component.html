@@ -1,0 +1,539 @@
+  <style>
+  .fstElement {
+  width: auto ;
+}
+  </style>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="breadcrumbs"> <span class="mainbc">TRANSACTION PROCESSING RULES</span> <span style="color: #ccc;">|</span> <span class="companynamebc">{{selectedCompName}}</span> <a href="javascript:void(0)" data-target="#switchCompany " data-toggle="modal" class="switchCompanyLink" rel="noreferrer noopener">Switch company</a> </div>
+        <div class="BgTitle"> Manage your transaction processing rules </div>
+        <div class="normal_text11">Additional instructional text goes here if needed </div>
+        <div class="setting_separator"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container companyRulesdetails">
+    <div class="row">
+      <div class="col-xs-12">
+
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs pre_post_styles" role="tablist">
+      <li role="presentation" class="active">
+          <a href="#pre" aria-controls="pre" role="tab" data-toggle="tab">PRE-CALCULATION RULES</a>     
+      </li> 
+      <li class="liseparate">|</li> 
+      <li role="presentation" >
+          <a href="#post" aria-controls="post" role="tab" data-toggle="tab">POST-CALCULATION RULES</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- pre calculation start -->
+      <div role="tabpanel" class="tab-pane active" id="pre">
+        <div class="tab_head">
+          Confirm line items based on taxable amount
+        </div>
+        <div class="col-xs-12">
+          <div class="row">
+
+        <div class="rule_input">
+          <label for="taxableaunt">TAXABLE AMOUNT LESS THAN</label>
+          <input type="number" name="taxableaunt" class="numbertype" (keypress)="omit_special_char($event)" id="taxableaunt" [(ngModel)]="taxableamount"  min="0" placeholder="0.00">
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-2">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" (click)= "saveTaxableAmount()" class="normal-btn gray-btn blue-btn" data-toggle="modal" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" (click)="cancel()" class="normal-btn blue-btn Reset-btn">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="setting_separator"></div> 
+            </div>
+      </div>
+          <div class="clearfix"></div>
+           <div class="tab_head addmargin30">
+  Confirm invoices and line items from trusted vendors
+        </div>
+             <div class="col-xs-12">
+          <div class="row">
+
+        <div class="rule_input">
+          <label for="selectpicker">TRUSTED VENDORS</label>
+          <select class="selectpicker" multiple data-live-search="true" id="trustedVendors">
+            <option *ngFor="let vendor of trustedVendors.vendorslist" value="{{vendor.vendorid}}" [selected]="vendor.trusted == 'Y'">{{ vendor.vendorname }}</option>
+          </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-2">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "saveTrustedVendors()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelTrustedVendors()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="setting_separator"></div> 
+         <div class="tab_head_main">
+          Calculate Zero tax
+          </div>
+         
+        <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+           Based on item code
+          </div>
+          <label for="selectpicker">ITEM CODES</label>
+           <select class="selectpicker" multiple data-live-search="true" id="itemCodes">
+            <option *ngFor="let item of ItemCodes.itemdetails" value="{{item.itemid}}" [selected]="item.trusted == 'Y'" >{{ item.itemcode }}</option>
+            </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "saveItemCode()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelZerotaxItemCode()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on vendor
+          </div>
+          <label for="selectpicker">VENDORS</label>
+           <select class="selectpicker" multiple data-live-search="true" id="vendors">
+            <option *ngFor="let ventor of vendors.vendorslist" value="{{ventor.vendorid}}" [selected]="ventor.trusted == 'Y'">{{ ventor.vendorname }}</option>
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "saveVendors()"  data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelZerotaxVendor()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on cost center
+          </div>
+          <label for="selectpicker">COST CENTERS</label>
+           <select class="selectpicker" multiple data-live-search="true"  id="costCenters">
+            <option *ngFor="let costcenter of costCenters.costcenterslist" value="{{costcenter.costcenterid}}" [selected]="costcenter.trusted == 'Y'" >{{ costcenter.costcentername }}</option>
+
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "saveCostcenter()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn"  (click)= "cancelZerotaxCostCen()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+      <div class="clearfix"></div>
+
+      </div>
+    </div>
+    </div>
+  <!-- pre calculation start -->
+  <!-- post calculation start -->
+      <div role="tabpanel" class="tab-pane " id="post">
+        <div class="col-xs-12">
+          <div class="row">
+          <div class="tab_head_main">
+          Mark to be reviewed
+          </div>
+         
+        <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+           Based on item code
+          </div>
+          <label for="selectpicker">ITEM CODES</label>
+           <select class="selectpicker" multiple data-live-search="true" id="postitemCodes1">
+            <option *ngFor="let item of ItemCodesForReview.itemslist" value="{{item.itemid}}" [selected]="item.markedforreview == 'Y'">{{ item.itemcode }}</option>
+            </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostItemCode1()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelRevItemCode()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on vendor
+          </div>
+          <label for="selectpicker">VENDORS</label>
+           <select class="selectpicker" multiple data-live-search="true" id="postvendors1">
+            <option *ngFor="let ventor of vendorsForReview.vendorslist" value="{{ventor.vendorid}}" [selected]="ventor.markedforreview == 'Y'">{{ ventor.vendorcode }}</option>
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostVendors1()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelRevendor()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on cost center
+          </div>
+          <label for="selectpicker">COST CENTERS</label>
+    <select class="selectpicker" multiple data-live-search="true"  id="postcostCenters1">
+            <option *ngFor="let costcenter of costCentersForReview.costcenters" value="{{costcenter.costcenterid}}" [selected]="costcenter.tobereviewed == 'Y'">{{ costcenter.costcentername }}</option>
+
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostCostcenter1()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelRevCostcenter()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+      <div class="clearfix"></div>
+     <div class="setting_separator"></div>
+      <div class="clearfix"></div>
+          <div class="tab_head_main">
+          Mark for allocation
+          </div>
+         
+        <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+           Based on item code
+          </div>
+          <label for="selectpicker">ITEM CODES</label>
+           <select class="selectpicker" multiple data-live-search="true" id="postitemCodes2">
+            <option *ngFor="let item of ItemCodesForAllocation.itemdetails" value="{{item.itemid}}" [selected]="item.tobeallocated == 'Y'">{{ item.itemname }}</option>
+            </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostItemCode2()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelAlloMarkAllo()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on vendor
+          </div>
+          <label for="selectpicker">VENDORS</label>
+           <select class="selectpicker" multiple data-live-search="true" id="postvendors2">
+            <option *ngFor="let ventor of vendorsForAllocation.vendorslist"  value="{{ventor.vendorid}}" [selected]="ventor.tobeallocated == 'Y'">{{ ventor.vendorname }}</option>
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostVendors2()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelAlloVendors()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+            <div class="col-xs-12 col-md-4">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="thick_head">
+          Based on cost center
+          </div>
+          <label for="selectpicker">COST CENTERS</label>
+    <select class="selectpicker" multiple data-live-search="true"  id="postcostCenters2">
+            <option *ngFor="let costcenter of costCentersForAllocation.costcenterslist" value="{{costcenter.costcenterid}}" [selected]="costcenter.tobeallocated == 'Y'">{{ costcenter.costcentername }}</option>
+
+    </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-6">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" (click)= "savePostCostcenter2()" data-target="#defineallocationmodal">Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn" (click)= "cancelAlloCostcenter()">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <div class="clearfix"></div>
+
+
+            </div>
+      </div>
+      <div class="clearfix"></div>
+     <div class="setting_separator"></div>
+     <div class="clearfix"></div>
+
+        <div class="tab_head">
+          Commit line items based on variance
+        </div>
+
+        <div class="col-xs-12">
+        <div class="row">
+
+        <div class="rule_input">
+        <label for="taxableaunt">VARIANCE LESS THAN</label>
+        <input type="text" name="taxableaunt" (keypress)="omit_special_char($event)" class="numbertype" id="taxableaunt" [(ngModel)]="posttaxableamount" placeholder="0.00">
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-xs-12 col-md-12">
+        <div class="row">
+        <div class="btn_container">
+        <div class="col-md-2">
+        <div class="row button_box_secfilter">
+        <div class="row">
+        <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal"  (click)= "savevariance()" >Save</a> </div>
+        <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn">Cancel</a> </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+       
+        </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="setting_separator"></div> 
+        <div class="clearfix"></div>
+
+
+
+
+        <div class="col-xs-12">
+          <div class="row">
+
+        <div class="rule_input">
+          <div class="tab_head">
+Commit calculated tax amount for untrusted vendors
+        </div>
+               
+        <label class="container_styled">Yes
+          <input type="radio" checked="checked" value="true"  name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container_styled">No
+          <input type="radio" name="radio" value="false" >
+          <span class="checkmark"></span>
+        </label>
+
+
+
+          <label for="selectpicker">UNTRUSTED VENDORS</label>
+          <select class="selectpicker" multiple data-live-search="true" id="untrustedVendors">
+            <option *ngFor="let vendor of untrustedVendors.vendorslist" value="{{vendor.vendorid}}" [selected]="vendor.untrusted == 'Y'">{{ vendor.vendorname }}</option>
+          </select>
+        </div>
+
+       <div class="clearfix"></div>
+    
+      <div class="col-xs-12 col-md-12">
+        <div class="row">
+      <div class="btn_container">
+            <div class="col-md-2">
+              <div class="row button_box_secfilter">
+                <div class="row">
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn gray-btn blue-btn" data-toggle="modal" data-target="#defineallocationmodal" (click)= "saveUnTrustedVendors()" >Save</a> </div>
+                  <div class="col-xs-6"> <a href="javascript:void(0)" class="normal-btn blue-btn Reset-btn">Cancel</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+         
+        
+            
+            
+      <div class="clearfix"></div>
+
+      </div>
+    </div>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div style="position: fixed;width:60%;top:40%;left: 45%;opacity: 1;z-index: 500000;"  *ngIf="loader">
+        <img src="assets/images/orange_circles.gif" style="margin-bottom: 20px;width:10%"><br>
+    </div>
+  <!-- post calculation ends -->
+      </div>
+    </div>
+     
+  </div>
+  </div>
